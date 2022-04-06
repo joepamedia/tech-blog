@@ -1,3 +1,4 @@
+// creates comments
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -19,6 +20,27 @@ const newFormHandler = async (event) => {
   }
 };
 
+// deletes a comment
+const delButtonHandler = async (event) => {
+  if (event.target.hasAttribute('data-action')) {
+    const id = event.target.getAttribute('data-action');
+
+    const response = await fetch(`/api/comments/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace(`/post/${post.id}`);
+    } else {
+      alert('Failed to delete post');
+    }
+  }
+};
+
 document
   .querySelector('.new-comment-form')
   .addEventListener('submit', newFormHandler);
+
+document
+  .querySelector('.delete-comment-form')
+  .addEventListener('click', delButtonHandler);

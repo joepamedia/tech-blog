@@ -21,19 +21,19 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/post/:id', withAuth, async (req, res) => {
+router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: User,
-          attributes: ['name'],
+          model: Comment,
+          include: [User],
         },
         {
-          model: Comment,
-          attributes: ['title'],
+          model: User,
         },
       ],
+      order: [[Comment, 'date_created', 'desc']],
     });
 
     const post = postData.get({ plain: true });

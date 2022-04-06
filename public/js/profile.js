@@ -1,6 +1,7 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
+  // creates post
   const title = document.querySelector('#post-name').value.trim();
   const description = document.querySelector('#post-desc').value.trim();
 
@@ -25,7 +26,7 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/posts/${id}`, {
+    const response = await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     });
 
@@ -43,4 +44,8 @@ document
 
 document
   .querySelector('.post-list')
+  .addEventListener('click', delButtonHandler);
+
+document
+  .querySelector('.update-comment-form')
   .addEventListener('click', delButtonHandler);
