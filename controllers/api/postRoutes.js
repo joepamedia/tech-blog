@@ -19,24 +19,23 @@ router.post('/', async (req, res) => {
 // update posts from db
 router.put('/:id', async (req, res) => {
   try {
-    const postData = await Post.update({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
+    const postData = await Post.update(
+      {
+        title: req.body.title,
+        description: req.body.description,
       },
-    });
-
-    if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
-      return;
-    }
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
 
     res.status(200).json(postData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
-
 // delete post from db
 router.delete('/:id', async (req, res) => {
   try {

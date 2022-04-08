@@ -20,6 +20,27 @@ const newFormHandler = async (event) => {
   }
 };
 
+// update post
+const updateButtonHandler = async (event) => {
+  event.preventDefault();
+  const id = document.querySelector('input[name="post_id"]').value.trim();
+  const title = document.querySelector('#update-title').value.trim();
+  const description = document.querySelector('#update-desc').value.trim();
+
+  const response = await fetch(`/api/posts/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ title, description }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (response.ok) {
+    document.location.replace(`/post/${id}`);
+  } else {
+    alert('Failed to update post');
+  }
+};
+
 // deletes a comment
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-action')) {
@@ -44,3 +65,7 @@ document
 document
   .querySelector('.delete-comment-form')
   .addEventListener('click', delButtonHandler);
+
+document
+  .querySelector('.update-post-form')
+  .addEventListener('submit', updateButtonHandler);

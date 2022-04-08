@@ -22,6 +22,33 @@ const newFormHandler = async (event) => {
   }
 };
 
+// // update post
+// const updateButtonHandler = async (event) => {
+//   event.preventDefault();
+//   const response = await fetch(`/api/post/${id}`, {
+//     method: 'PUT',
+//     body: JSON.stringify({ title, description }),
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   });
+//   if (response.ok) {
+//     document.location.replace(`/post/${post.id}`);
+//   } else {
+//     alert('Failed to update post');
+//   }
+// };
+
+// update button close/appear
+// function openForm() {
+//   document.getElementById('myForm').style.display = 'block';
+// }
+
+// function closeForm() {
+//   document.getElementById('myForm').style.display = 'none';
+// }
+
+// deletes post
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
@@ -44,8 +71,4 @@ document
 
 document
   .querySelector('.post-list')
-  .addEventListener('click', delButtonHandler);
-
-document
-  .querySelector('.update-comment-form')
   .addEventListener('click', delButtonHandler);
