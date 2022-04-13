@@ -39,15 +39,6 @@ const newFormHandler = async (event) => {
 //   }
 // };
 
-// update button close/appear
-// function openForm() {
-//   document.getElementById('myForm').style.display = 'block';
-// }
-
-// function closeForm() {
-//   document.getElementById('myForm').style.display = 'none';
-// }
-
 // deletes post
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {

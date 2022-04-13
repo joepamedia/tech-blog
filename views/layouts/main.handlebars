@@ -8,21 +8,33 @@
   <link rel='stylesheet' type="text/css" href='/css/style.css' />
 </head>
 
-<body>
-  <div class="flex-column justify-space-around gradient-bg">
-    <header class="d-f justify-content-between align-items-center p-1">
+<body class="bg-info">
+  <div>
+    <header>
       <h1>
-        <a href="/">Tech Blog</a>
+        <a class="txt-dec" href="/">Tech Blog</a>
       </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
+{{!-- navbar --}}
+<nav class="navbar navbar-expand-sm navbar-light bg-secondary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Tech Blog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a class="txt-dec"href="/profile">Profile</a> |
+        <a class="txt-dec" id="logout">Logout</a>
         {{else}}
-        <a href="/login">login</a>
+        <a class="txt-dec" href="/login">Login</a>
         {{/if}}
-      </nav>
+      </ul>
+    </div>
+  </div>
+</nav>
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->

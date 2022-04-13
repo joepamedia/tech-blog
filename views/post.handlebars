@@ -4,7 +4,7 @@
     <p>Created by {{user.name}} on {{format_date date_created}}</p>
 <form class="form delete-comment-form">
   {{#each comments as |comment| }}
-  <div class="d-flex p-1">
+  <div class="d-flex justify-content-center p-1">
       <div> {{user.name}} on {{format_date date_created}}: {{comment.title}}
         <button type="submit" data-action="{{comment.id}}" class="btn btn-primary">Delete</button>
       </div>
@@ -12,7 +12,7 @@
     {{/each}}
 </form>
 {{!-- update button --}}
-<div id="myForm">
+<div id="myForm" class="p-5">
   <form class="update-post-form">
     <h1>Update the Post</h1>
     <input value='{{id}}' type='hidden' name='post_id' />
@@ -24,7 +24,6 @@
     <input id="update-desc" name="description" required>
 
     <button type="submit" class="btn">Update</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
 
@@ -34,13 +33,13 @@
 {{!-- add a comment by adding a form, don't show comment on home page  --}}
 {{#if logged_in}}
 <form class="form new-comment-form">
-  <div class="form-group d-flex">
+  <div class="form-group d-flex justify-content-center">
     <input value='{{id}}' type='hidden' name='post_id' />
         <label for="comment-desc">Add a comment:</label>
           <textarea class="form-input" id="comment-desc" name="comment-desc"></textarea>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Create</button>
+    <div class="form-group p-1">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
   </div>
 </form>
 {{else}}
