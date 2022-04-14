@@ -1,5 +1,5 @@
 
-   # Team Profile Generator ![MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+   # Tech Blog ![MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
   ## Table of Contents
   * [Description](#description)
